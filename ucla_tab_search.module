@@ -156,47 +156,12 @@ curl_close ($ch);
   ) + $fieldset_default;
   $form['books']['text_query'] = $query_textfield;
   $form['books']['text_query']['#attributes'] = array(
-    'placeholder' => t('Find book, journals, selected articles* and more.'),
+    'placeholder' => t('Find books, journals and more.'),
   );
 
-  $form['books']['catalog'] = array(
-    '#type' => 'radios',
-    '#options' => array(
-        'BM-Mel' => t('Melvyl UC Catalog (+selected articles)'),
-        'BM-CAT' => t('UCLA Library Catalog'),
-    ),
-    '#default_value' => 'BM-Mel',
-  );
-  $form['books']['catalog_container_mel'] = array(
-    '#type' => 'container',
-    '#states' => array(
-      'visible' => array(':input[name="books[catalog]"]' => array('value' => 'BM-Mel')),
-    ),
-    '#attributes' => array(
-        'class' => array(
-          'pane-description',
-        ),
-    ),
-  );
-  $form['books']['catalog_container_mel']['description'] = array(
-    '#markup' => t('@todo: A description associated with BM-Mel.'),
-  );
-  $form['books']['catalog_container_cat'] = array(
-    '#type' => 'container',
-    '#states' => array(
-      'visible' => array(':input[name="books[catalog]"]' => array('value' => 'BM-CAT')),
-    ),
-    '#attributes' => array(
-        'class' => array(
-          'pane-description',
-        ),
-    ),
-  );
-  $form['books']['catalog_container_cat']['description'] = array(
-    '#markup' => t('@todo: A description associated with BM-CAT.'),
-  );
 
-  $form['books']['ucla_catalog_search_index'] = array(
+// moving keyword block
+$form['books']['ucla_catalog_search_index'] = array(
     '#type' => 'select',
     '#options' => array(
         'GKEY^' => t('Keyword'),
@@ -219,6 +184,56 @@ curl_close ($ch);
       'visible' => array(':input[name="books[catalog]"]' => array('value' => 'BM-CAT')),
     ),
   );
+// end moving keyword block
+
+
+
+
+
+  $form['books']['catalog'] = array(
+    '#type' => 'radios',
+    '#options' => array(
+        'BM-Mel' => t('Melvyl UC Catalog (+selected articles)'),
+        'BM-CAT' => t('UCLA Library Catalog'),
+    ),
+    '#default_value' => 'BM-Mel',
+  );
+  $form['books']['catalog_container_mel'] = array(
+    '#type' => 'container',
+    '#states' => array(
+      'visible' => array(':input[name="books[catalog]"]' => array('value' => 'BM-Mel')),
+    ),
+    '#attributes' => array(
+        'class' => array(
+          'pane-description',
+        ),
+    ),
+  );
+
+ $form['books']['catalog_container_mel']['description'] = array(
+    '#markup' => t('<strong>What am I searching?</strong></br>
+<strong>Melvyl</strong> provides information about articles, books, journals and other materials held by UCLA, other University of California (UC) campuses, and libraries worldwide. Many records contain links to full-text articles from <a href="http://ucla.worldcat.org/advancedsearch"> selected databases. </a>
+<p><p>Need more help? Browse our <a href="http://guides.library.ucla.edu/">Subject Guides</a> '),
+  );
+  $form['books']['catalog_container_cat'] = array(
+    '#type' => 'container',
+    '#states' => array(
+      'visible' => array(':input[name="books[catalog]"]' => array('value' => 'BM-CAT')),
+    ),
+    '#attributes' => array(
+        'class' => array(
+          'pane-description',
+        ),
+    ),
+  );
+
+
+    $form['books']['catalog_container_cat']['description'] = array(
+    '#markup' => t('<strong>What am I searching?</strong></br>
+<strong>UCLA Library Catalog</strong> provides information about the holdings of the UCLA Library, the Southern Regional Library Facility (SRLF), and specialized collections across campus. It includes journals, and periodicals by title, <strong> but it does not contain journal article titles or authors.</strong>'),
+  );
+
+
   
   $form['books']['books_search'] = $search_button;
   $form['books']['books_search']['#name'] = 'op_books';
@@ -235,8 +250,11 @@ curl_close ($ch);
   $form['articles']['text_query']['#attributes'] = array(
     'placeholder' => t('Quick article search. Search several databases at once.'),
   );
+
+  $defaults['search_type'][] = 'keyword';
   $form['articles']['search_index'] = array(
     '#type' => 'select',
+    '#default_value' => $defaults['search_type'],
     '#options' => array(
         'title' => t('Title'),
         'author' => t('Author'),
@@ -254,23 +272,51 @@ curl_close ($ch);
         'placeholder' => t('Year (yyyy)'),
     ),
   );
+  $defaults['category'][] = '103266';
   $form['articles']['search_categories'] = array(
     '#type' => 'checkboxes',
+    '#default_value' => $defaults['category'],
     '#options' => array(
-      '103267' => t('Arts and Humanities'),
-      '103349' => t('Business and economics'),
-      '103269' => t('Engineering and Aplied Sciences'),
-      '103266' => t('General'),
-      '103378' => t('Health and Life Sciences'),
-      '103270' => t('Physical Sciences and Mathematics'),
-      '103268' => t('Social Sciences'),
+      '103267' => t('<a href="http://www.library.ucla.edu/search/arts-humanities">Arts and Humanities</a>'),
+      '103349' => t('<a href="http://www.library.ucla.edu/search/business-economics">Business and economics</a>'),
+      '103269' => t('<a href="http://www.library.ucla.edu/search/engineering-applied-sciences">Engineering and Applied Sciences</a>'),
+      '103266' => t('<a href="http://www.library.ucla.edu/search/general-databases">General</a>'),
+      '103378' => t('<a href="http://www.library.ucla.edu/search/health-life-sciences">Health and Life Sciences</a>'),
+      '103270' => t('<a href="http://www.library.ucla.edu/search/physical-sciences-mathematics">Physical Sciences and Mathematics</a>'),
+      '103268' => t('<a href="http://www.library.ucla.edu/search/social-sciences">Social Sciences</a>'),
     ),
   );
+
+
+
+
   $form['articles']['articles_search'] = $search_button;
   $form['articles']['articles_search']['#name'] = 'op_articles';
-  $form['articles']['description'] = array(
-    '#markup' => t('@todo: A description associated with articles tab.'),
-  );
+
+// begin  code for description text  - ccthompson
+
+    $form['articles']['articles_container_mel'] = array(
+        '#type' => 'container',
+        '#states' => array(
+            'visible' => array(':input[name="articles[catalog]"]' => array('value' => 'articles-Mel')),
+        ),
+        '#attributes' => array(
+            'class' => array(
+                'pane-description',
+            ),
+        ),
+    );
+
+    $form['articles']['articles_container_mel']['description'] = array(
+        '#markup' => t('<strong>Click on the highlighed subjects</strong> to see </br>the databases being searched.</br>'),
+    );
+
+
+// end  code for description text  - ccthompson
+
+
+
+
 
   
   ////////////////////////////////////////////////////////////////////////////////
@@ -304,8 +350,38 @@ curl_close ($ch);
     ),
     '#default_value' => 'within',
   );
+
+
+
+
+
   $form['databases']['databases_search'] = $search_button;
   $form['databases']['databases_search']['#name'] = 'op_databases';
+
+// begin  code for description text  - ccthompson
+
+    $form['databases']['databases_container_mel'] = array(
+        '#type' => 'container',
+        '#states' => array(
+            'visible' => array(':input[name="databases[catalog]"]' => array('value' => 'databases-Mel')),
+        ),
+        '#attributes' => array(
+            'class' => array(
+                'pane-description',
+            ),
+        ),
+    );
+
+    $form['databases']['databases_container_mel']['description'] = array(
+        '#markup' => t('<strong>What am I searching?</strong></br>Datasearch of the licensed databases subscribed to by UCLA Library or via consortial partnerships with other
+        UC Libraries. There are a few non licensed databases (PubMed) If you do not find the database you are seeking, try search the UCLA Library Catalog and in Melvyl.'),
+    );
+
+
+// end  code for description text  - ccthompson
+
+
+
 
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -325,6 +401,7 @@ curl_close ($ch);
         'J-E' => t('SFX for e-journals'),
         'J-ALL' => t('UCLA Library Catalog for print and e-journals'),
     ),
+'#default_value' => 'J-E',
   );
   $form['journals']['sfx_search_index_container'] = array(
     '#type' => 'container',
@@ -333,13 +410,13 @@ curl_close ($ch);
     ),
   );
   $form['journals']['sfx_search_index_container']['sfx_search_index'] = array(
-    '#type' => 'radios',
+    '#type' => 'select',
     '#options' => array(
         'within' => t('Contains'),
         'starts' => t('Starts with'),
         'exact' => t('Exact'),
     ),
-    '#default_value' => 'within',
+    '#default_value' => 'starts',
   );
   $form['journals']['ucla_tabbed_index_container'] = array(
     '#type' => 'container',
@@ -348,15 +425,35 @@ curl_close ($ch);
     ),
   );
   $form['journals']['ucla_tabbed_index_container']['ucla_tabbed_index'] = array(
-    '#type' => 'radios',
+    '#type' => 'select',
     '#options' => array(
         'JKEY' => t('Contains'),
         'JAL2' => t('Starts with'),
     ),
     '#default_value' => 'JKEY',
   );
+
+
+
   $form['journals']['journals_search'] = $search_button;
   $form['journals']['journals_search']['#name'] = 'op_journals';
+
+  $form['journals']['journals_container_mel'] = array(
+        '#type' => 'container',
+        '#states' => array(
+            'visible' => array(':input[name="journals[catalog]"]' => array('value' => 'J-E')),
+        ),
+        '#attributes' => array(
+            'class' => array(
+                'pane-description',
+            ),
+        ),
+    );
+
+  $form['journals']['journals_container_mel']['description'] = array(
+        '#markup' => t('<strong>What am I searching?</strong></br>
+Electronic Journals in the SFX knowledgebase. '),
+    );
 
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -370,9 +467,30 @@ curl_close ($ch);
   $form['guides']['text_query']['#attributes'] = array(
     'placeholder' => t('search for a database title'),
   );
+
+
   $form['guides']['guides_search'] = $search_button;
   $form['guides']['guides_search']['#name'] = 'op_guides';
+    // begin  code for description text  - ccthompson
 
+    $form['guides']['guides_container_mel'] = array(
+        '#type' => 'container',
+        '#states' => array(
+            'visible' => array(':input[name="guides[catalog-journal]"]' => array('value' => 'guides-Mel')),
+        ),
+        '#attributes' => array(
+            'class' => array(
+                'pane-description',
+            ),
+        ),
+    );
+
+    $form['guides']['guides_container_mel']['description'] = array(
+        '#markup' => t('<strong>What am I searching?</strong></br>Research Guides created by Library staff.'),
+    );
+
+
+// end  code for description text  - ccthompson
 
   ////////////////////////////////////////////////////////////////////////////////
   // Reserves tab.
@@ -412,13 +530,39 @@ curl_close ($ch);
   $form['reserves']['reserves_search'] = $search_button;
   $form['reserves']['reserves_search']['#name'] = 'op_reserves';
 
+    // begin  code for description text  - ccthompson
+
+    $form['reserves']['reserves_container_mel'] = array(
+        '#type' => 'container',
+        '#states' => array(
+            'visible' => array(':input[name="reserves[catalog]"]' => array('value' => 'reserves-Mel')),
+        ),
+        '#attributes' => array(
+            'class' => array(
+                'pane-description',
+            ),
+        ),
+    );
+
+    $defaults['category'][] = '103266';
+    $form['reserves']['reserves_container_mel']['description'] = array(
+        '#markup' => t('<strong>What am I searching?</strong></br>Select the instructor, department, course, or section for which you wish to search for items.<br>
+        Use the <a href="www.registrar.ucla.edu/schedule/">UCLA Schedule of Classes</a><br> for reference.<br>
+        <p>
+        <strong>Information for Instructors</strong><br>
+        <a href="http://www.library.ucla.edu/service/submitting-reserve-lists">Submitting Reserve Lists</a>
+'),
+    );
+
+// end  code for description text  - ccthompson
+
 
   ////////////////////////////////////////////////////////////////////////////////
   // oac's tab.
   // oac's tab.
   // oac's tab.
   $form['oac'] = array(
-    '#title' => t('OAC'),
+    '#title' => t('Archives & Manuscripts'),
   ) + $fieldset_default;
   $form['oac']['text_query'] = $query_textfield;
   $form['oac']['text_query']['#attributes'] = array(
@@ -426,6 +570,38 @@ curl_close ($ch);
   );
   $form['oac']['oac_search'] = $search_button;
   $form['oac']['oac_search']['#name'] = 'op_oac';
+
+    // begin  code for description text  - ccthompson
+
+    $form['oac']['oac_container_mel'] = array(
+        '#type' => 'container',
+        '#states' => array(
+            'visible' => array(':input[name="oac[catalog]"]' => array('value' => 'oac-Mel')),
+        ),
+        '#attributes' => array(
+            'class' => array(
+                'pane-description',
+            ),
+        ),
+    );
+
+    $form['oac']['oac_container_mel']['description'] = array(
+        '#markup' => t('<strong>What am I searching?</strong></br>OAC stuff!  '),
+    );
+
+
+// end  code for description text  - ccthompson
+
+
+
+
+
+
+
+
+
+
+
   return $form;
 }
 

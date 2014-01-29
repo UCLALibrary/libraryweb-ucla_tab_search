@@ -46,20 +46,23 @@ function ucla_search_route_search($search_info) {
 }
 
 function ucla_search_catalog($search_info) {
-  $target_url = 'http://catalog.library.ucla.edu/cgi-bin/Pwebrecon.cgi?DB=local&Search_Arg=';
-  $extra_params = '&Search_Code=';
-  if ($search_info['search_code']) {
-    $extra_params .= $search_info['search_code'];
-  } else {
-    $extra_params .= 'GKEY^';
-  }
-  $extra_params .= '&SL=None&CNT=50&HIST=1';
-  // Replace space with plus, but do NOT url encode the terms
-  $target_url .= str_replace(' ', '+', $search_info['search_terms']);
-  // Extra params must be after the search terms in the URL
-  $target_url .= $extra_params;
-  drupal_goto($path = $target_url);
-}
+//$target_url = 'http://catalog.library.ucla.edu/cgi-bin/Pwebrecon.cgi?DB=local&Search_Arg=';
+  $target_url = 'http://catalog.library.ucla.edu/vwebv/search?searchArg=';
+    $extra_params = '&searchCode=';
+	//$extra_params = '&Search_Code=';
+	  if ($search_info['search_code']) {
+	      $extra_params .= $search_info['search_code'];
+		    } else {
+			    $extra_params .= 'GKEY^';
+				  }
+				    $extra_params .= '&searchType=1';
+					//$extra_params .= '&SL=None&CNT=50&HIST=1';
+					  // Replace space with plus, but do NOT url encode the terms
+					    $target_url .= str_replace(' ', '+', $search_info['search_terms']);
+						  // Extra params must be after the search terms in the URL
+						    $target_url .= $extra_params;
+							  drupal_goto($path = $target_url);
+							  }
 
 function ucla_search_reserves($search_info) {
 
@@ -172,7 +175,7 @@ function ucla_search_site($search_info) {
 function map_database_search_type($ucla_value) {
   // ucla form value => databases required value
   $mappings = array (
-    'within' => 'contains',
+    'contains' => 'contains',
     'starts' => 'starts',
   );
   return $mappings[$ucla_value];
