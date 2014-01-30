@@ -395,7 +395,7 @@ Other Search Option<br>
   ) + $fieldset_default;
   $form['journals']['text_query'] = $query_textfield;
   $form['journals']['text_query']['#attributes'] = array(
-    'placeholder' => t('search e-journal titles.'),
+    'placeholder' => t('Search e-journal titles.'),
   );
   $form['journals']['catalog'] = array(
     '#type' => 'radios',
