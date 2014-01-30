@@ -373,7 +373,7 @@ $form['books']['ucla_catalog_search_index'] = array(
     );
 
     $form['databases']['databases_container_mel']['description'] = array(
-        '#markup' => t('<strong>What am I searching?</strong></br>Database titles and descriptions of what the database contains. The majority are licensed, subscription titles and will require your computer to be configured for <a href="http://www.library.ucla.edu/service/campus-access">off-campus access</a> if you do not live on campus. If you do not find the database you are seeking, try searching the <a href="catalog.library.ucla.edu">UCLA Library Catalog</a> or <a href="guides.library.ucla.edu">Research Guides</a>.
+        '#markup' => t('<strong>What am I searching?</strong></br>Database titles and descriptions of what the database contains. The majority are licensed, subscription titles and will require your computer to be configured for <a href="http://www.library.ucla.edu/service/campus-access">off-campus access</a> if you do not live on campus. If you do not find the database you are seeking, try searching the <a href="http://catalog.library.ucla.edu">UCLA Library Catalog</a> or <a href="http://guides.library.ucla.edu">Research Guides</a>.
 <p>
 Other Search Option<br>
 <a href="http://guides.library.ucla.edu/atoz">A-Z List of Databases</a>'),
