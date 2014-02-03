@@ -454,7 +454,7 @@ Other Search Option<br>
 
   $form['journals']['journals_container_mel']['description'] = array(
         '#markup' => t('<strong>What am I searching?</strong></br>
-UCLA Library serial titles and abbreviations in the SFX knowledgebase
+UCLA Library electronic journal titles and their associated abbreviations (e.g. J Vac Sci Technol) that have been activated as subscribed in the <a href="http://www.exlibrisgroup.com/?catid={E95BFDD4-3D90-429D-BE04-277929E39997}">SFX knowledgebase</a>.
 <p>
 <a href="http://ucelinks.cdlib.org:8888/sfx_ucla/az/default?&param_sid_save=e21718f6c370481f02f52709928f7941&param_lang_save=eng&param_letter_group_save=A&param_perform_save=searchCategories&param_letter_group_script_save=Latin&param_chinese_checkbox_save=0&param_services2filter_save=getFullTxt&param_services2filter_save=getSelectedFullTxt&param_current_view_save=table&param_pattern_save=&param_jumpToPage_save=&param_type_save=browseLetterGroup&param_textSearchType_save=startsWith&&param_perform_value=searchTitle" target="blank" title="A-Z Journal Titles Search">A-Z journal titles</a>'),
     );
@@ -469,7 +469,7 @@ UCLA Library serial titles and abbreviations in the SFX knowledgebase
   ) + $fieldset_default;
   $form['guides']['text_query'] = $query_textfield;
   $form['guides']['text_query']['#attributes'] = array(
-    'placeholder' => t('search for a database title'),
+    'placeholder' => t('Search for course guides, subject guides and useful resources.'),
   );
 
 
