@@ -132,10 +132,7 @@ function ucla_search_database($search_info) {
 }
 
 function ucla_search_guides($search_info) {
-
-print_r("Guides");
-
-$target_url = 'http://guides.library.ucla.edu/search.php?iid=261&c=0&search=';
+  $target_url = 'http://guides.library.ucla.edu/search.php?iid=261&c=0&search=';
   // Replace space with plus, but do NOT url encode the terms
   $target_url .= str_replace(' ', '+', $search_info['search_terms']);
   drupal_goto($path = $target_url);
@@ -192,4 +189,6 @@ function map_sfx_search_type($ucla_value) {
     'starts' => 'startsWith',
   );
   return $mappings[$ucla_value];
+}
+ngs[$ucla_value];
 }
