@@ -190,5 +190,6 @@ function map_sfx_search_type($ucla_value) {
   );
   return $mappings[$ucla_value];
 }
-ngs[$ucla_value];
+
+s[$ucla_value];
 }
