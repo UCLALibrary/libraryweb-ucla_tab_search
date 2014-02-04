@@ -746,16 +746,3 @@ exit;
     }
   }
 }
-     break;
-      }
-
-    // Log the search info before doing the search
-//    ucla_search_log_search($search_info);
-    // Send search info to router, which will do the actual search
-    ucla_search_route_search($search_info);
-    }
-    else {
-      $form_state['values']['ucla_form_id'] = $maps;
-    }
-  }
-}
