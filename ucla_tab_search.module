@@ -547,8 +547,8 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
       switch ($tab) {
         case 'books':
 
-//print_r($form_state['values']);
-//exit;
+print_r($form_state['values']);
+exit;
         
         $form_state['values']['ucla_form_id'] = $maps[$form_state['values']['books']['catalog']];
 	    switch ( $maps[$form_state['values']['books']['catalog']] ) {
@@ -745,4 +745,6 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
       $form_state['values']['ucla_form_id'] = $maps;
     }
   }
+}
+}
 }
