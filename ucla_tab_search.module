@@ -236,7 +236,7 @@ $form['books']['ucla_catalog_search_index'] = array(
 
   
   $form['books']['books_search'] = $search_button;
-//  $form['books']['books_search']['#name'] = 'op_books';
+  $form['books']['books_search']['#name'] = 'op_books';
 
   
   ////////////////////////////////////////////////////////////////////////////////
@@ -547,7 +547,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
       switch ($tab) {
         case 'books':
 
-print_r("books");
+print_r($form_state['values']['books']['text_query']);
 exit;
         
         $form_state['values']['ucla_form_id'] = $maps[$form_state['values']['books']['catalog']];
