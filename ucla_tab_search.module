@@ -187,7 +187,7 @@ $form['books']['ucla_catalog_search_index'] = array(
 // end moving keyword block
 
 
-  $form['books']['mySearch'] = array('#type' => 'hidden', '#value' => 'books_and_more');
+
 
 
   $form['books']['catalog'] = array(
@@ -287,7 +287,7 @@ $form['books']['ucla_catalog_search_index'] = array(
     ),
   );
 
-  $form['books']['mySearch'] = array('#type' => 'hidden', '#value' => 'articles');
+
 
 
   $form['articles']['articles_search'] = $search_button;
@@ -544,11 +544,10 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
       continue;
     }
     if (is_array($maps)) {
-      switch ($form_state['values']['books']['mySearch']) {
-        case 'books_and_more':
+      switch ($tab) {
+        case 'books':
 
-//print_r($form_state['values']['books']['text_query']);
-print_r($form_state['values']['books']['mySearch']);
+print_r("books");
 exit;
         
         $form_state['values']['ucla_form_id'] = $maps[$form_state['values']['books']['catalog']];
@@ -735,6 +734,19 @@ exit;
 	  'browser_ip' => $browser_ip,
 	  );
         break;
+      }
+
+    // Log the search info before doing the search
+//    ucla_search_log_search($search_info);
+    // Send search info to router, which will do the actual search
+    ucla_search_route_search($search_info);
+    }
+    else {
+      $form_state['values']['ucla_form_id'] = $maps;
+    }
+  }
+}
+     break;
       }
 
     // Log the search info before doing the search
