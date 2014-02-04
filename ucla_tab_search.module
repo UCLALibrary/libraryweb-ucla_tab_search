@@ -187,7 +187,7 @@ $form['books']['ucla_catalog_search_index'] = array(
 // end moving keyword block
 
 
-  $form['books']['mySearch'] = array('#type' => 'hidden', '#value' => 'books_and_more');
+  $form['books']['mySearch'] = array('#type' => 'hidden', '#value' => 'books');
 
 
   $form['books']['catalog'] = array(
@@ -351,7 +351,7 @@ $form['books']['ucla_catalog_search_index'] = array(
     '#default_value' => 'within',
   );
 
-
+  $form['books']['mySearch'] = array('#type' => 'hidden', '#value' => 'databases');
 
 
 
@@ -435,7 +435,7 @@ Other Search Option<br>
     '#default_value' => 'JKEY',
   );
 
-
+  $form['books']['mySearch'] = array('#type' => 'hidden', '#value' => 'journals');
 
   $form['journals']['journals_search'] = $search_button;
   $form['journals']['journals_search']['#name'] = 'op_journals';
@@ -472,6 +472,7 @@ UCLA Library electronic journal titles and their associated abbreviations (e.g. 
     'placeholder' => t('Search for course guides, subject guides and useful resources.'),
   );
 
+  $form['books']['mySearch'] = array('#type' => 'hidden', '#value' => 'guides');  
 
   $form['guides']['guides_search'] = $search_button;
   $form['guides']['guides_search']['#name'] = 'op_guides';
@@ -545,12 +546,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
     }
     if (is_array($maps)) {
       switch ($form_state['values']['books']['mySearch']) {
-        case 'books_and_more':
-
-//print_r($form_state['values']['books']['text_query']);
-print_r($form_state['values']['books']['mySearch']);
-exit;
-        
+        case 'books':
         $form_state['values']['ucla_form_id'] = $maps[$form_state['values']['books']['catalog']];
 	    switch ( $maps[$form_state['values']['books']['catalog']] ) {
 	      case 'BM-Mel':
@@ -740,6 +736,13 @@ exit;
     // Log the search info before doing the search
 //    ucla_search_log_search($search_info);
     // Send search info to router, which will do the actual search
+    ucla_search_route_search($search_info);
+    }
+    else {
+      $form_state['values']['ucla_form_id'] = $maps;
+    }
+  }
+}
     ucla_search_route_search($search_info);
     }
     else {
