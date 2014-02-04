@@ -236,7 +236,7 @@ $form['books']['ucla_catalog_search_index'] = array(
 
   
   $form['books']['books_search'] = $search_button;
-  $form['books']['books_search']['#name'] = 'op_books';
+//  $form['books']['books_search']['#name'] = 'op_books';
 
   
   ////////////////////////////////////////////////////////////////////////////////
