@@ -287,7 +287,7 @@ $form['books']['ucla_catalog_search_index'] = array(
     ),
   );
 
-  $form['books']['mySearch'] = array('#type' => 'hidden', '#value' => 'articles');
+  $form['articles']['mySearch'] = array('#type' => 'hidden', '#value' => 'articles');
 
 
   $form['articles']['articles_search'] = $search_button;
@@ -351,7 +351,7 @@ $form['books']['ucla_catalog_search_index'] = array(
     '#default_value' => 'within',
   );
 
-  $form['books']['mySearch'] = array('#type' => 'hidden', '#value' => 'databases');
+  $form['databases']['mySearch'] = array('#type' => 'hidden', '#value' => 'databases');
 
 
 
@@ -435,7 +435,7 @@ Other Search Option<br>
     '#default_value' => 'JKEY',
   );
 
-  $form['books']['mySearch'] = array('#type' => 'hidden', '#value' => 'journals');
+  $form['journals']['mySearch'] = array('#type' => 'hidden', '#value' => 'journals');
 
   $form['journals']['journals_search'] = $search_button;
   $form['journals']['journals_search']['#name'] = 'op_journals';
@@ -472,7 +472,7 @@ UCLA Library electronic journal titles and their associated abbreviations (e.g. 
     'placeholder' => t('Search for course guides, subject guides and useful resources.'),
   );
 
-  $form['books']['mySearch'] = array('#type' => 'hidden', '#value' => 'guides');  
+  $form['guides']['mySearch'] = array('#type' => 'hidden', '#value' => 'guides');  
 
   $form['guides']['guides_search'] = $search_button;
   $form['guides']['guides_search']['#name'] = 'op_guides';
@@ -743,7 +743,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
     }
   }
 }
-    ucla_search_route_search($search_info);
+arch_route_search($search_info);
     }
     else {
       $form_state['values']['ucla_form_id'] = $maps;
