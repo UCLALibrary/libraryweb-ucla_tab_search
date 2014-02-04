@@ -544,8 +544,8 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
       continue;
     }
     if (is_array($maps)) {
-      switch ($tab) {
-        case 'books':
+      switch ($form_state['values']['books']['mySearch']) {
+        case 'books_and_more':
 
 //print_r($form_state['values']['books']['text_query']);
 print_r($form_state['values']['books']['mySearch']);
