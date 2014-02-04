@@ -759,17 +759,3 @@ exit;
     }
   }
 }
-arch_route_search($search_info);
-    }
-    else {
-      $form_state['values']['ucla_form_id'] = $maps;
-    }
-  }
-}
-arch_route_search($search_info);
-    }
-    else {
-      $form_state['values']['ucla_form_id'] = $maps;
-    }
-  }
-}
