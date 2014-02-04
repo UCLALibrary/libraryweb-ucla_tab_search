@@ -546,7 +546,10 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
     if (is_array($maps)) {
       switch ($tab) {
         case 'books':
-          $form_state['values']['ucla_form_id'] = $maps[$form_state['values']['books']['catalog']];
+
+print_r("books");
+        
+        $form_state['values']['ucla_form_id'] = $maps[$form_state['values']['books']['catalog']];
 	    switch ( $maps[$form_state['values']['books']['catalog']] ) {
 	      case 'BM-Mel':
 		// Put form info into array expected by search logger / handlers
