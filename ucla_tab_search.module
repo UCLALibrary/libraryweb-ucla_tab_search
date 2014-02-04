@@ -187,7 +187,7 @@ $form['books']['ucla_catalog_search_index'] = array(
 // end moving keyword block
 
 
-
+  $form['books']['mySearch'] = array('#type' => 'hidden', '#value' => 'books_and_more');
 
 
   $form['books']['catalog'] = array(
@@ -547,7 +547,8 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
       switch ($tab) {
         case 'books':
 
-print_r($form_state['values']['books']['text_query']);
+//print_r($form_state['values']['books']['text_query']);
+print_r($form_state['values']['books']['mySearch']);
 exit;
         
         $form_state['values']['ucla_form_id'] = $maps[$form_state['values']['books']['catalog']];
