@@ -128,7 +128,7 @@ curl_close ($ch);
 ////////////////////////////////////////////////////////////////////////////////
   $form['tabs'] = array(
     '#type' => 'vertical_tabs',
-    '#default_tab' => 'edit-books',
+//    '#default_tab' => 'edit-books',
   );
   $fieldset_default = array(
     '#type' => 'fieldset',
@@ -544,9 +544,15 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
       continue;
     }
     if (is_array($maps)) {
-      switch ($tab) {
-        case 'books':
-          $form_state['values']['ucla_form_id'] = $maps[$form_state['values']['books']['catalog']];
+//print_r($form_state['values']);
+//exit;
+      switch ($form_state['values'][tabs__active_tab]) {
+        case 'edit-books':
+
+//print_r($form_state['values'][tabs__active_tab]);
+//exit;
+        
+        $form_state['values']['ucla_form_id'] = $maps[$form_state['values']['books']['catalog']];
 	    switch ( $maps[$form_state['values']['books']['catalog']] ) {
 	      case 'BM-Mel':
 		// Put form info into array expected by search logger / handlers
@@ -570,7 +576,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	    }
 	break;
 
-        case 'articles':
+        case 'edit-articles':
 	  $search_categories_codes = '';
 	  foreach ($form_state['values']['articles']['search_categories'] as $search_categories_code) {
 	    if( $search_categories_code > 0 ){
@@ -595,7 +601,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	  ucla_search_route_search($search_info);
 	break;
 
-        case 'databases':
+        case 'edit-databases':
 	  $search_categories_codes = '';
 	  foreach ($form_state['values']['articles']['search_categories'] as $search_categories_code) {
 	    if( $search_categories_code > 0 ){
@@ -607,7 +613,8 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	  } else {
 	    $search_year = 'date';
 	  }
-	  switch ( $maps[$form_state['values']['databases']['method']] ) {
+	  switch ( $form_state['values']['databases']['method'] ) {
+//	  $maps[$form_state['values']['databases']['method']] ) {
 	    case 'within':
 	      // Put form info into array expected by search logger / handlers
 	      $search_info = array (
@@ -631,7 +638,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	  }
         break;
 
-        case 'journals_dev':
+        case 'journals-dev':
           $form_state['values']['ucla_form_id'] = $maps[$form_state['values']['journals']['catalog']];
 	    switch ( $maps[$form_state['values']['journals']['catalog']] ) {
 	      case 'J-ALL':
@@ -663,9 +670,10 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	    }
         break;
 
-        case 'journals':
+        case 'edit-journals':
           $form_state['values']['ucla_form_id'] = $maps[$form_state['values']['journals']['catalog']];
-	    switch ( $maps[$form_state['values']['journals']['catalog']] ) {
+	    switch ( $form_state['values']['journals']['catalog'] ) {
+//	    switch ( $maps[$form_state['values']['journals']['catalog']] ) {
 	      case 'J-ALL':
 		$search_info = array (
 		'search_target' => 'catalog',
@@ -687,7 +695,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	    }
         break;
 
-        case 'guides':
+        case 'edit-guides':
 	  // Put form info into array expected by search logger / handlers
 	  $search_info = array (
 	  'search_target' => 'guides',
