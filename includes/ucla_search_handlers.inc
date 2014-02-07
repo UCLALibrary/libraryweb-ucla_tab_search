@@ -139,7 +139,7 @@ function ucla_search_guides($search_info) {
 }
 
 function ucla_search_melvyl($search_info) {
-  $target_url = 'http://ucla.worldcat.org/search?qt=wc_org_ucla&q=';
+  $target_url = 'http://ucla.worldcat.org/search?qt=wc_org_ucla&scope=1&q=';
   // Don't replace space with plus - URL-encode as-is
   $target_url .= drupal_encode_path($search_info['search_terms']);
   drupal_goto($path = $target_url);
