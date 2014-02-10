@@ -743,7 +743,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
       }
 
     // Log the search info before doing the search
-//    ucla_search_log_search($search_info);
+    ucla_search_log_search($search_info);
     // Send search info to router, which will do the actual search
     ucla_search_route_search($search_info);
     }
