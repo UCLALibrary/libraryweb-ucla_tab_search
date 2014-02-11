@@ -500,6 +500,43 @@ UCLA Library electronic journal titles and their associated abbreviations (e.g. 
 
   
   
+////////////////////////////////////////////////////////////////////////////////
+  // oac's tab.
+  // oac's tab.
+  // oac's tab.
+  $form['oac'] = array(
+    '#title' => t('Archives & Manuscripts'),
+  ) + $fieldset_default;
+  $form['oac']['text_query'] = $query_textfield;
+  $form['oac']['text_query']['#attributes'] = array(
+    'placeholder' => t('Search the OAC for a manuscript or archive'),
+  );
+  $form['oac']['oac_search'] = $search_button;
+  $form['oac']['oac_search']['#name'] = 'op_oac';
+
+    // begin  code for description text  - ccthompson
+
+    $form['oac']['oac_container_mel'] = array(
+        '#type' => 'container',
+        '#states' => array(
+            'visible' => array(':input[name="oac[catalog]"]' => array('value' => 'oac-Mel')),
+        ),
+        '#attributes' => array(
+            'class' => array(
+                'pane-description',
+            ),
+        ),
+    );
+
+    $form['oac']['oac_container_mel']['description'] = array(
+        '#markup' => t('<strong>What am I searching?</strong></br>The Online Archive of California (OAC) is a Web-accessible, digital gateway to information about materials such as manuscripts, photographs, and works of art held in libraries, museums, archives, and other institutions across California, including UCLA. The OAC allows patrons to view finding aids, i.e., inventories of collection content, which provide detailed information about collection content that is readily accessible and searchable.'),
+    );
+
+
+// end  code for description text  - ccthompson
+
+
+
 
 
 
