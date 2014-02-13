@@ -212,8 +212,11 @@ $form['books']['ucla_catalog_search_index'] = array(
 
  $form['books']['catalog_container_mel']['description'] = array(
     '#markup' => t('<strong>What am I searching?</strong></br>
-<strong>Melvyl</strong> provides information about articles, books, journals and other materials held by UCLA, other University of California (UC) campuses, and libraries worldwide. Many records contain links to full-text articles from <a href="http://ucla.worldcat.org/advancedsearch"> selected databases. </a>
-<p><p>Need more help? Browse our <a href="http://guides.library.ucla.edu/">Subject Guides</a> '),
+<strong>Melvyl</strong> provides information about articles, books, journals and other materials held by UCLA, other Univerisity of
+California (UC) campuses, and libraries worldwide. This search is limited to University of California Libraries, but
+can be changed via a pulldown search limit on the results screen. Many records contain links to full-text articles from
+<a href="http://ucla.worldcat.org/advancedsearch"> selected databases. </a>
+<p><p>Need more help? Browse our <a href="http://guides.library.ucla.edu/">Subject Guides</a>'),
   );
   $form['books']['catalog_container_cat'] = array(
     '#type' => 'container',
@@ -278,7 +281,7 @@ $form['books']['ucla_catalog_search_index'] = array(
     '#default_value' => $defaults['category'],
     '#options' => array(
       '103267' => t('<a href="http://www.library.ucla.edu/search/arts-humanities">Arts and Humanities</a>'),
-      '103349' => t('<a href="http://www.library.ucla.edu/search/business-economics">Business and economics</a>'),
+      '103349' => t('<a href="http://www.library.ucla.edu/search/business-economics">Business and Economics</a>'),
       '103269' => t('<a href="http://www.library.ucla.edu/search/engineering-applied-sciences">Engineering and Applied Sciences</a>'),
       '103266' => t('<a href="http://www.library.ucla.edu/search/general-databases">General</a>'),
       '103378' => t('<a href="http://www.library.ucla.edu/search/health-life-sciences">Health and Life Sciences</a>'),
@@ -375,7 +378,8 @@ $form['books']['ucla_catalog_search_index'] = array(
     $form['databases']['databases_container_mel']['description'] = array(
         '#markup' => t('<strong>What am I searching?</strong></br>Database titles and descriptions of what the database contains. The majority are licensed, subscription titles and will require your computer to be configured for <a href="http://www.library.ucla.edu/service/campus-access">off-campus access</a> if you do not live on campus. If you do not find the database you are seeking, try searching the <a href="http://catalog.library.ucla.edu">UCLA Library Catalog</a> or <a href="http://guides.library.ucla.edu">Research Guides</a>.
 <p>
-Other Search Option<br>
+<strong>Other Search Option</strong><br>
+<a href="http://http://unitproj.library.ucla.edu/search/subjects.cfm">Find Databases by Subject</a></br>
 <a href="http://guides.library.ucla.edu/atoz">A-Z List of Databases</a>'),
     );
 
@@ -400,7 +404,7 @@ Other Search Option<br>
   $form['journals']['catalog'] = array(
     '#type' => 'radios',
     '#options' => array(
-        'J-E' => t('SFX for e-journals'),
+        'J-E' => t('UCelinks for e-journals'),
         'J-ALL' => t('UCLA Library Catalog for print and e-journals'),
     ),
 '#default_value' => 'J-E',
@@ -453,12 +457,13 @@ Other Search Option<br>
     );
 
   $form['journals']['journals_container_mel']['description'] = array(
-        '#markup' => t('
-
-<strong>What am I searching?</strong></br>
-UCLA Library electronic journal titles and their associated abbreviations (e.g. J Vac Sci Technol) that have been activated as subscribed in the <a href="http://www.library.ucla.edu/search/search-find#sfx">SFX knowledgebase</a>.
+        '#markup' => t('<strong>What am I searching?</strong></br>
+The titles (e.g. Scientific American) and abbreviations (e.g. J Vac Sci Technol) of journals subscribed to electronically by the UCLA Library and linked to article databases and Google Scholar.</br>
+Use <a href="http://ucelinks.cdlib.org:8888/sfx_local/cgi/core/citation-linker.cgi">Citation Linker</a> to find journal articles by title and author.
 <p>
-<a href="http://ucelinks.cdlib.org:8888/sfx_ucla/az/default?&param_sid_save=e21718f6c370481f02f52709928f7941&param_lang_save=eng&param_letter_group_save=A&param_perform_save=searchCategories&param_letter_group_script_save=Latin&param_chinese_checkbox_save=0&param_services2filter_save=getFullTxt&param_services2filter_save=getSelectedFullTxt&param_current_view_save=table&param_pattern_save=&param_jumpToPage_save=&param_type_save=browseLetterGroup&param_textSearchType_save=startsWith&&param_perform_value=searchTitle" target="blank" title="A-Z Journal Titles Search">A-Z journal titles</a>'),
+<strong>Other Search Options</strong></br>
+<a href="http://ucelinks.cdlib.org:8888/sfx_ucla/az/default?&param_sid_save=e21718f6c370481f02f52709928f7941&param_lang_save=eng&param_letter_group_save=A&param_perform_save=searchCategories&param_letter_group_script_save=Latin&param_chinese_checkbox_save=0&param_services2filter_save=getFullTxt&param_services2filter_save=getSelectedFullTxt&param_current_view_save=table&param_pattern_save=&param_jumpToPage_save=&param_type_save=browseLetterGroup&param_textSearchType_save=startsWith&&param_perform_value=searchTitle" target="blank" title="A-Z Journal Titles Search">A-Z journal titles</a>
+<a href="http://ucelinks.cdlib.org:8888/sfx_local/cgi/core/citation-linker.cgi">Locate the Article from your Citation</a>'),
     );
 
 
