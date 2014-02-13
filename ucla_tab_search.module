@@ -618,7 +618,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 		'search_code' => $form_state['values']['books']['ucla_catalog_search_index'],
 		'search_date' => $search_date,
 		'browser_ip' => $browser_ip,
-		'search_form' => $search_form,
+		'search_form' => $maps[$form_state['values']['books']['catalog']],
 		);
 		break;
 	    }
@@ -645,7 +645,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	  'search_categories' => $search_categories_codes,
 	  'search_date' => $search_date,
 	  'browser_ip' => $browser_ip,
-	  'search_form' => $search_form,
+	  'search_form' => 'ART',
 	  );
 	  ucla_search_route_search($search_info);
 	break;
@@ -672,7 +672,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	      'search_terms' => $form_state['values']['databases']['text_query'],
 	      'search_date' => $search_date,
 	      'browser_ip' => $browser_ip,
-		  'search_form' => $search_form,
+              'search_form' => 'DB',
 	      );
 	    break;
 	    case 'starts':
@@ -683,7 +683,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	      'search_terms' => $form_state['values']['databases']['text_query'],
 	      'search_date' => $search_date,
 	      'browser_ip' => $browser_ip,
-		  'search_form' => $search_form,
+              'search_form' => 'DB',
 	      );
 	      break;
 	  }
@@ -706,7 +706,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 		'search_terms' => $form_state['values']['books']['text_query'],
 		'search_date' => $search_date,
 		'browser_ip' => $browser_ip,
-		'search_form' => $search_form,
+		'search_form' => 'J-E',
 		);
 	      break;
 	      case 'J-E':
@@ -717,7 +717,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 		'search_code' => $form_state['values']['books']['ucla_catalog_search_index'],
 		'search_date' => $search_date,
 		'browser_ip' => $browser_ip,
-		'search_form' => $search_form,
+		'search_form' => 'J-ALL',
 		);
 	      break;
 	    }
@@ -734,7 +734,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 		'search_code' => $form_state['values']['journals']['ucla_tabbed_index_container']['ucla_tabbed_index'],
 		'search_date' => $search_date,
 		'browser_ip' => $browser_ip,
-		'search_form' => $search_form,
+		'search_form' => 'J-ALL',
 		);
 	      break;
 	      case 'J-E':
@@ -744,7 +744,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 		'search_type' => $form_state['values']['journals']['sfx_search_index_container']['sfx_search_index'],
 		'search_date' => $search_date,
 		'browser_ip' => $browser_ip,
-		'search_form' => $search_form,
+		'search_form' => 'J-E',
 		);
 	      break;
 	    }
@@ -757,7 +757,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	  'search_terms' => $form_state['values']['guides']['text_query'],
 	  'search_date' => $search_date,
 	  'browser_ip' => $browser_ip,
-	  'search_form' => $search_form,
+	  'search_form' => 'RG',
 	  );
 	break;
 
@@ -772,7 +772,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	  'search_seq' => $form_state['values']['reserves']['search_seq'],
 	  'search_date' => $search_date,
 	  'browser_ip' => $browser_ip,
-	  'search_form' => $search_form,
+	  'search_form' => 'RES',
 	  );
         break;
 
@@ -783,7 +783,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	  'search_terms' => $form_state['values']['oac']['text_query'],
 	  'search_date' => $search_date,
 	  'browser_ip' => $browser_ip,
-	  'search_form' => $search_form,
+	  'search_form' => 'MA',
 	  );
 	break;
 
@@ -794,7 +794,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	  'search_terms' => 'BAD SEARCH - COULD NOT ID TAB',
 	  'search_date' => $search_date,
 	  'browser_ip' => $browser_ip,
-	  'search_form' => $search_form,
+	  'search_form' => 'UNKNOWN',
 	  );
         break;
       }
