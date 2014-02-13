@@ -311,7 +311,7 @@ can be changed via a pulldown search limit on the results screen. Many records c
     );
 
     $form['articles']['articles_container_mel']['description'] = array(
-        '#markup' => t('Selected databases are searched. </br>See also: <a href="http://unitproj.library.ucla.edu/search/subjects.cfm">Databases by Subject</a>.'),
+        '#markup' => t('Articles in selected databases are searched. </br>For a more comprehensive listing, use <a href="http://unitproj.library.ucla.edu/search/subjects.cfm">Databases by Subject</a>.'),
     );
 
 
