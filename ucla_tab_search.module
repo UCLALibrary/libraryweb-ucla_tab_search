@@ -572,6 +572,14 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
   $browser_ip = (isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']);
 //  $search_form = 'ucla_tab';
 
+    'books' => array('BM-CAT' => 'BM-CAT', 'BM-Mel' => 'BM-Mel'),
+    'articles' => array('ART' => 'ART', 'article' => 'article'),
+    'journals' => array('J-ALL' => 'J-ALL', 'J-E' => 'J-E'),
+    'databases' => array('within' => 'within', 'starts' => 'starts'),
+    'guides' => array('within' => 'within', 'starts' => 'starts'),
+    'reserves' => array('within' => 'within', 'starts' => 'starts'),
+    'oac' => array('within' => 'within', 'starts' => 'starts'),
+  );
   $tab_form_id_map = array(
     'books' => array('BM-CAT' => 'BM-CAT', 'BM-Mel' => 'BM-Mel'),
     'articles' => array('ART' => 'ART', 'article' => 'article'),
@@ -647,7 +655,6 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	  'browser_ip' => $browser_ip,
 	  'search_form' => 'ART',
 	  );
-	  ucla_search_route_search($search_info);
 	break;
 
         case 'edit-databases':
