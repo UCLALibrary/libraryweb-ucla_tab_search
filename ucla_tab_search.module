@@ -439,10 +439,10 @@ If you do not find the database you are seeking, try searching the <a href="http
   $form['journals']['ucla_tabbed_index_container']['ucla_tabbed_index'] = array(
     '#type' => 'select',
     '#options' => array(
-        'JKEY' => t('Contains'),
+        'JKEY^' => t('Contains'),
         'JAL2' => t('Starts with'),
     ),
-    '#default_value' => 'JKEY',
+    '#default_value' => 'JKEY^',
   );
 
 
