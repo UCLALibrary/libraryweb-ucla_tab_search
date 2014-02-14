@@ -10,7 +10,7 @@
 function ucla_search_log_search($search_info) {
   // Only certain elements are logged
   $data = array (
-	'search_target' => 'tab_'.$search_info['search_target'],
+    'search_target' => $search_info['search_target'],
     'search_terms' => $search_info['search_terms'],
     'search_date' => $search_info['search_date'],
     'browser_ip' => $search_info['browser_ip'],

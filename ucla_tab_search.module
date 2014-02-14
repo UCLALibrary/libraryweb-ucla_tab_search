@@ -780,7 +780,7 @@ function ucla_tab_search_tabs_form_submit($form, &$form_state) {
 	  );
         break;
 
-        case 'oac':
+        case 'edit-oac':
 	  // Put form info into array expected by search logger / handlers
 	  $search_info = array (
 	  'search_target' => 'oac',
